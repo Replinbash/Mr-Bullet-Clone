@@ -1,19 +1,22 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using MrBullet.Bullet;
+using System;
 
 namespace MrBullet.Player
 {
 	public class PlayerController : MonoBehaviour
 	{
 		[SerializeField] private BulletSO _bulletSettings;
-		[SerializeField] private BulletSpawner _bulletSpawner;
 		[SerializeField] private LineRenderer _line;
 		[SerializeField] private GameObject _laser;
 		[SerializeField] private Transform _initialFirePos, _endFirePos, _crosshair;
 
+		private BulletSpawner _bulletSpawner;
 		private Transform _armPos;
 		private Camera _cam;
+
+		public static event Action ShootEvent;
 
 		private bool OnAim => Input.GetMouseButton(0);
 		private bool OnShoot => Input.GetMouseButtonUp(0);
@@ -23,6 +26,7 @@ namespace MrBullet.Player
 		{
 			_cam = Camera.main;
 			_armPos = this.gameObject.transform.GetChild(0);
+			_bulletSpawner = FindObjectOfType<BulletSpawner>();
 		}
 
 		private void Start()
@@ -39,7 +43,7 @@ namespace MrBullet.Player
 
 			if (OnShoot)
 			{
-				Shoot();
+				Shoot();					
 			}
 
 			if (OnRestart)
@@ -70,14 +74,12 @@ namespace MrBullet.Player
 		private void Shoot()
 		{
 			_laser.gameObject.SetActive(false);
-
+			ShootEvent.Invoke();
 			var tempBullet = _bulletSpawner.pool.Get();
 			tempBullet.transform.position = _initialFirePos.position;
-			//GameObject tempBullet = Instantiate(_bulletSettings.BulletPrefab, _initialFirePos.position, Quaternion.identity);
 			Rigidbody2D rigidbody = tempBullet.GetComponent<Rigidbody2D>();
 			rigidbody.AddForce(_initialFirePos.right * _bulletSettings.BulletSpeed, ForceMode2D.Impulse);
 		}
-
 	}
 }
 

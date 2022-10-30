@@ -606,10 +606,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1773555981208739342}
-  - component: {fileID: 1773555981208739343}
   - component: {fileID: 1773555981208739341}
   - component: {fileID: 1773555981208739340}
   - component: {fileID: 1773555981208739338}
+  - component: {fileID: 1773555981208739343}
   m_Layer: 0
   m_Name: Ninja
   m_TagString: Enemy
@@ -638,19 +638,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1773555981208739343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1773555981208739329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d55c3e60117e4d4fb4ce2a0ce635c81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemySettings: {fileID: 11400000, guid: cebdbb6f9d6b1ed4ba4122b5c1bf6daf, type: 2}
 --- !u!50 &1773555981208739341
 Rigidbody2D:
   serializedVersion: 4
@@ -716,6 +703,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.87, y: 2.166179}
   m_EdgeRadius: 0
+--- !u!114 &1773555981208739343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773555981208739329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d55c3e60117e4d4fb4ce2a0ce635c81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemySettings: {fileID: 11400000, guid: cebdbb6f9d6b1ed4ba4122b5c1bf6daf, type: 2}
+  _levelSettings: {fileID: 11400000, guid: a4ac204a497d2974c8bcd2752fa5a1e4, type: 2}
 --- !u!1 &1773555981378943314
 GameObject:
   m_ObjectHideFlags: 0
