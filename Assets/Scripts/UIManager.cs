@@ -1,6 +1,7 @@
 using MrBullet.Player;
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>   
@@ -41,5 +42,10 @@ public class UIManager : Singleton<UIManager>
 	{
 		var bulletImage = _container.transform.GetChild(_levelSettings.AmmoCapacity - 1);
 		bulletImage.GetComponentInChildren<Image>().enabled = false;
+	}
+
+	public bool IsMouseOverUI()
+	{
+		return EventSystem.current.IsPointerOverGameObject();
 	}
 }

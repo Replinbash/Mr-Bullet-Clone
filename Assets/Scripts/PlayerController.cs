@@ -36,20 +36,23 @@ namespace MrBullet.Player
 
 		void Update()
 		{
-			if (OnAim)
+			if (!UIManager.Instance.IsMouseOverUI())
 			{
-				Aim();
-			}
+				if (OnAim)
+				{
+					Aim();
+				}
 
-			if (OnShoot)
-			{
-				Shoot();					
-			}
+				if (OnShoot)
+				{
+					Shoot();
+				}
 
-			if (OnRestart)
-			{
-				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-			}
+				if (OnRestart)
+				{
+					SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+				}
+			}			
 		}
 
 		private void Aim()
@@ -72,14 +75,15 @@ namespace MrBullet.Player
 		}
 
 		private void Shoot()
-		{
+		{		
 			_laser.gameObject.SetActive(false);
 			ShootEvent.Invoke();
 			var tempBullet = _bulletSpawner.pool.Get();
 			tempBullet.transform.position = _initialFirePos.position;
 			Rigidbody2D rigidbody = tempBullet.GetComponent<Rigidbody2D>();
 			rigidbody.AddForce(_initialFirePos.right * _bulletSettings.BulletSpeed, ForceMode2D.Impulse);
-		}
+		}		
 	}
 }
 
+	
