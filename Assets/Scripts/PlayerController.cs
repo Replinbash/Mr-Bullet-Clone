@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using MrBullet.Bullet;
 using System;
 
@@ -46,12 +45,7 @@ namespace MrBullet.Player
 				if (OnShoot)
 				{
 					Shoot();
-				}
-
-				if (OnRestart)
-				{
-					SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-				}
+				}				
 			}			
 		}
 

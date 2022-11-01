@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Level_test
   m_EditorClassIdentifier: 
   _goldenBulletsAmmo: 1
-  _defaultBulletsAmmo: 4
-  _enemyCount: 4
+  _defaultBulletsAmmo: 3
+  _oneStarText: WELL DONE!
+  _twoStarText: AWESOME!
+  _threeStarText: FANSTASTIC!

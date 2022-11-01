@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7026283cb910add49b11251aab90e9c0, type: 3}
   m_Name: Enemy_settings
   m_EditorClassIdentifier: 
-  _mass: 0
-  _directionX: 3
+  _directionX: 5
   _directionY: 0
   _tntPower: 2
   _tntRadius: 3

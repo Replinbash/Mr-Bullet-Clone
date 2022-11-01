@@ -28,14 +28,13 @@ public class Tnt : MonoBehaviour
 
 		foreach (Collider2D collider in hitColliders)
 		{
-			Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
-			if (rb != null)
+			if (collider.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
 			{
 				Vector2 explodeDirection = rb.transform.position - transform.position;
 
 				rb.bodyType = RigidbodyType2D.Dynamic;
 				rb.AddForce(power * explodeDirection, ForceMode2D.Impulse);
-			}
+			}		
 		}
 	}
 

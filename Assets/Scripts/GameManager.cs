@@ -1,6 +1,6 @@
+using UnityEngine;
 using Game.Enemy;
 using MrBullet.Player;
-using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -37,14 +37,13 @@ public class GameManager : Singleton<GameManager>
 		var enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
 
 		if (enemyCount <= 0)
-		{
-			var usedBullets = _initBullets - _levelSettings.AmmoCapacity;
-			Debug.Log("Win");
+		{			
+			UIManager.Instance.WinScreen(_initBullets);
 		}
 
 		else if (enemyCount >= 0 && _levelSettings.AmmoCapacity == 0)
 		{
-			Debug.Log("Lose");
+			UIManager.Instance.LoseScreen();
 		}
 	}	
 

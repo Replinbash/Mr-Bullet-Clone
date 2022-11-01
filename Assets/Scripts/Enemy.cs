@@ -1,12 +1,16 @@
+using DG.Tweening;
 using System;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 namespace Game.Enemy
 {
 	public class Enemy : MonoBehaviour
 	{
 		[SerializeField] private EnemySO _enemySettings;
+		[SerializeField] private GameObject _bloodVFX;
 		private Rigidbody2D[] _rigidbody;
+		private Vector3 _direction;
 
 		public static event Action EnemyDeathEvent;
 
@@ -32,14 +36,17 @@ namespace Game.Enemy
 			Death();
 		}
 
-		private void ApplyForce(Collider2D collision)
+		private void ApplyForce(Collider2D target)
 		{
-			Vector2 direction = transform.position - collision.transform.position;
+			_direction = target.transform.position - transform.position;
+			_direction = _direction.normalized;
+
 			foreach (var rb in _rigidbody)
 			{
-				rb.bodyType = RigidbodyType2D.Dynamic;
-				rb.AddForce(new Vector2(direction.x > 0 ? _enemySettings.DirectionX : -_enemySettings.DirectionX,
-				direction.y > 0 ? _enemySettings.DirectionY : -_enemySettings.DirectionY), ForceMode2D.Impulse);
+				rb.bodyType = RigidbodyType2D.Dynamic;				
+
+				rb.AddForce(new Vector2(_direction.x > 0 ? -_enemySettings.DirectionX : _enemySettings.DirectionX, 
+				_enemySettings.DirectionY), ForceMode2D.Impulse);
 			}
 		}
 
@@ -48,9 +55,11 @@ namespace Game.Enemy
 			if (gameObject.CompareTag("Death"))
 				return;
 
+			Quaternion rotation = Quaternion.Euler(new Vector2(0f, _direction.x > 0 ? -90f : 90f));
+			Instantiate(_bloodVFX, transform.position, rotation, transform);
+
 			gameObject.tag = "Death";
 			EnemyDeathEvent?.Invoke();
-		}
+		}		
 	}
-
 }
