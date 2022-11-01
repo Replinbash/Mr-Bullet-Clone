@@ -1,15 +1,25 @@
-using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuManager : Singleton<MenuManager>
+public class MenuManager : Singleton <MenuManager>
 {
-    [SerializeField] private CanvasGroup _fadeImage;
+	[SerializeField] private float _transitionTime;
+	private Animator _transation;
 
-    public void RestartScene()
-    {
-        //_fadeImage.DOFade(1, 1f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-		//_fadeImage.DOFade(0, 1f);
+	private void Awake()
+	{
+		_transation = GetComponentInChildren<Animator>();
+	}
+	public void RestartLevel()
+	{
+		StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
+	}
+
+	public IEnumerator LoadLevel(int levelIndex)
+	{
+		_transation.SetTrigger("StartFade");
+		yield return new WaitForSeconds(_transitionTime);
+		SceneManager.LoadScene(levelIndex);
 	}
 }

@@ -135,6 +135,11 @@ public class UIManager : Singleton<UIManager>
 			yield return new WaitForSeconds(1f);		
 			if (panel.TryGetComponent<CanvasGroup>(out CanvasGroup fade))
 			{
+				if (fade != null)
+				{
+					fade.DOKill();
+				}
+
 				fade.DOFade(1, 2f);
 			}
 		}
