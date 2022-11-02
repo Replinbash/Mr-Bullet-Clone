@@ -6,6 +6,7 @@ public class GameManager : Singleton<GameManager>
 {
 	[SerializeField] private LevelSO _levelSettings;
 	private int _initBullets;
+	private int _levelNumber;
 
 	private void OnEnable()
 	{
@@ -22,6 +23,7 @@ public class GameManager : Singleton<GameManager>
 	private void Start()
 	{
 		_initBullets = _levelSettings.CalculateAmmoCapacity();
+		_levelNumber = PlayerPrefs.GetInt("Level", 1);
 	}
 
 	private void CheckAmmo()
@@ -38,6 +40,7 @@ public class GameManager : Singleton<GameManager>
 
 		if (enemyCount <= 0)
 		{			
+			LevelManager.Instance.UnlockNextLevel(_levelNumber);
 			UIManager.Instance.WinScreen(_initBullets);
 		}
 

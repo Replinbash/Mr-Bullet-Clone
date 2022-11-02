@@ -1,7 +1,5 @@
-using DG.Tweening;
 using System;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 namespace Game.Enemy
 {
@@ -21,15 +19,22 @@ namespace Game.Enemy
 
 		private void Start()
 		{
-			foreach (var rb in _rigidbody)
+			// Gravity adjustment of all limbs except legs
+			for (int i = 0; i < gameObject.transform.childCount; i++)
 			{
-				rb.isKinematic = true;
+				if (i > 4)
+				{
+					_rigidbody[5].gravityScale = 2;
+					_rigidbody[6].gravityScale = 2;
+					continue;
+				}
+				_rigidbody[i].gravityScale = 0;
 			}
 		}
 
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
-			if (collision.CompareTag("Limbs"))
+			if (collision.CompareTag("Limbs") || collision.CompareTag("Ground"))
 				return;
 
 			ApplyForce(collision);
@@ -43,6 +48,7 @@ namespace Game.Enemy
 
 			foreach (var rb in _rigidbody)
 			{
+				rb.gravityScale = 2;
 				rb.bodyType = RigidbodyType2D.Dynamic;				
 
 				rb.AddForce(new Vector2(_direction.x > 0 ? -_enemySettings.DirectionX : _enemySettings.DirectionX, 
