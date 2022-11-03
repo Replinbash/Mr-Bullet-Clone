@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _directionX: 5
   _directionY: 0
+  _deathSound: {fileID: 8300000, guid: 635131b1b2f18a84084b33cc616f5a5d, type: 3}
   _tntPower: 2
   _tntRadius: 3

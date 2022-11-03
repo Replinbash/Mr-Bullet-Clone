@@ -9,6 +9,7 @@ TagManager:
   - Limbs
   - Death
   - Ground
+  - TNT
   layers:
   - Default
   - TransparentFX

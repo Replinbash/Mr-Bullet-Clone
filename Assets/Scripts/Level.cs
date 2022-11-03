@@ -8,6 +8,7 @@ public class Level : MonoBehaviour
 
 	private Button _levelButton;
 	private Image _image;
+	private Color _lockTheLevel = Color.black;
 
 	private void Awake()
 	{
@@ -25,7 +26,7 @@ public class Level : MonoBehaviour
 
 		else
 		{
-			_image.color = Color.black;
+			_image.color = _lockTheLevel;
 		}
 
 	}

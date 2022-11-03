@@ -64,6 +64,7 @@ namespace Game.Enemy
 			Quaternion rotation = Quaternion.Euler(new Vector2(0f, _direction.x > 0 ? -90f : 90f));
 			Instantiate(_bloodVFX, transform.position, rotation, transform);
 
+			AudioManager.Instance.PlayAudio(_enemySettings.DeathSound);
 			gameObject.tag = "Death";
 			EnemyDeathEvent?.Invoke();
 		}		

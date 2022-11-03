@@ -132,14 +132,10 @@ public class UIManager : Singleton<UIManager>
 	{
 		if (isWin)
 		{
-			yield return new WaitForSeconds(1f);		
+			yield return new WaitForSeconds(1f);			
+
 			if (panel.TryGetComponent<CanvasGroup>(out CanvasGroup fade))
 			{
-				if (fade != null)
-				{
-					fade.DOKill();
-				}
-
 				fade.DOFade(1, 2f);
 			}
 		}
@@ -148,5 +144,5 @@ public class UIManager : Singleton<UIManager>
 		{
 			panel.transform.DOMoveY(360f, 1f);
 		}
-	}
+	}	
 }
