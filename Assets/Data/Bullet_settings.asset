@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletSpeed: 35
   _pistolShoot: {fileID: 8300000, guid: 4db1748ab6ed21e45ba1eeba5f894181, type: 3}
-  _groundHit: {fileID: 8300000, guid: 8386f3ddc1823154ebe5506d66eff983, type: 3}
+  _groundHit: {fileID: 8300000, guid: cf552b5b66af5ba49b5b4425f1930493, type: 3}
   _tntHit: {fileID: 8300000, guid: 0ec193a63fc88da4085bcf99789f69d4, type: 3}
   _initialSize: 5
   _maxSize: 10

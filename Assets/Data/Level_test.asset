@@ -12,8 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fdf7f3ae1a9cd941ad6bcb6561b17e5, type: 3}
   m_Name: Level_test
   m_EditorClassIdentifier: 
-  _goldenBulletsAmmo: 1
+  _goldenBulletsAmmo: 2
   _defaultBulletsAmmo: 3
-  _oneStarText: WELL DONE!
-  _twoStarText: AWESOME!
-  _threeStarText: FANSTASTIC!

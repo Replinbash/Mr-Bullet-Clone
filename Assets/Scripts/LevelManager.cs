@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : Singleton <LevelManager>
 {
-	[SerializeField] private float _transitionTime;
+	[SerializeField] private float _fadeTransitionTime;
 	private Animator _transation;	
 
 	private void Awake()
@@ -30,7 +30,7 @@ public class LevelManager : Singleton <LevelManager>
 	public IEnumerator LoadLevel(int levelIndex)
 	{
 		_transation.SetTrigger("StartFade");
-		yield return new WaitForSeconds(_transitionTime);
+		yield return new WaitForSeconds(_fadeTransitionTime);
 		SceneManager.LoadScene(levelIndex);
 	}
 

@@ -1,3 +1,4 @@
+using Game.Enemy;
 using UnityEngine;
 
 public class Tnt : MonoBehaviour
@@ -6,11 +7,13 @@ public class Tnt : MonoBehaviour
 	[SerializeField] private EnemySO _tntSettings;
 	private BoxCollider2D _collider;
 	private SpriteRenderer _spriteRenderer;
+	private Enemy _enemy;
 
 	private void Awake()
 	{
 		_collider = GetComponent<BoxCollider2D>();	
 		_spriteRenderer = GetComponent<SpriteRenderer>();	
+		_enemy = FindObjectOfType<Enemy>();
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision)
@@ -31,9 +34,9 @@ public class Tnt : MonoBehaviour
 			if (collider.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
 			{
 				Vector2 explodeDirection = rb.transform.position - transform.position;
-
 				rb.bodyType = RigidbodyType2D.Dynamic;
 				rb.AddForce(power * explodeDirection, ForceMode2D.Impulse);
+				_enemy.Death();				
 			}		
 		}
 	}

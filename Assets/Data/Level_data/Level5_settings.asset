@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7026283cb910add49b11251aab90e9c0, type: 3}
-  m_Name: Enemy_settings
+  m_Script: {fileID: 11500000, guid: 8fdf7f3ae1a9cd941ad6bcb6561b17e5, type: 3}
+  m_Name: Level5_settings
   m_EditorClassIdentifier: 
-  _directionX: 5
-  _directionY: 0
-  _deathSound: {fileID: 8300000, guid: 635131b1b2f18a84084b33cc616f5a5d, type: 3}
-  _tntPower: 7.5
-  _tntRadius: 3
+  _goldenBulletsAmmo: 2
+  _defaultBulletsAmmo: 2

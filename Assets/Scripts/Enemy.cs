@@ -56,7 +56,7 @@ namespace Game.Enemy
 			}
 		}
 
-		private void Death()
+		public void Death()
 		{
 			if (gameObject.CompareTag("Death"))
 				return;

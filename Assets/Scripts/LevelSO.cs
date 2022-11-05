@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="Level", menuName ="Level/Create New Level Settings")]
 public class LevelSO : ScriptableObject
 {
-	[Header("Number Of Ammo")]
+	[Header("Ammo Settings")]
 	[SerializeField] private int _goldenBulletsAmmo;
 	[SerializeField] private int _defaultBulletsAmmo;
 

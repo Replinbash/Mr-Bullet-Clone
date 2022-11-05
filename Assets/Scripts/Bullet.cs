@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
-using UnityEngine.Tilemaps;
 
 namespace MrBullet.Bullet
 {
@@ -13,7 +11,6 @@ namespace MrBullet.Bullet
 		private IObjectPool<Bullet> _bulletPool;
 		private Rigidbody2D _rigidbody;
 		private Vector2 _lastVelocity;
-
 
 		private void Awake()
 		{

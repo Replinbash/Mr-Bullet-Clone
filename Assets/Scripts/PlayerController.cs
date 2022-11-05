@@ -19,7 +19,6 @@ namespace MrBullet.Player
 
 		private bool OnAim => Input.GetMouseButton(0);
 		private bool OnShoot => Input.GetMouseButtonUp(0);
-		private bool OnRestart => Input.GetMouseButton(1);
 
 		private void Awake()
 		{
